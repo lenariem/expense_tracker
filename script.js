@@ -5,6 +5,8 @@ const list = document.getElementById('list');
 const form = document.getElementById('form');
 const text = document.getElementById('text');
 const amount = document.getElementById('amount');
+const popup_container = document.querySelector(".popup");
+const popup = document.getElementById("formPopup");
 
 /* const  testTransactions = [
     {id: 1, text: 'Flowers', amount: -20},
@@ -22,7 +24,7 @@ function addTransaction(e) {
     e.preventDefault();
 
     if(text.value.trim() === '' || amount.value.trim() === '') {
-        alert('Please add a text and amount!');
+        popup.classList.toggle("show");
     } else {
         const transaction = {
             id: generateID(),
@@ -46,7 +48,10 @@ function addTransaction(e) {
 
 // Generate random ID 
 function generateID() {
-    return Math.floor(Math.random() * 1000000000);
+    const letters = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
+    let selectedLetter = letters[Math.floor(Math.random() * letters.length)];
+    let randomNumber =  Math.floor(Math.random() * 1000000000);
+    return selectedLetter + randomNumber;
 }
 
 // Add transactions to DOM list

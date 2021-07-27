@@ -41,18 +41,28 @@
       <form id="form">
         <div class="form-control">
           <label for="text"><b>Text</b></label>
-          <input type="text" id="text" placeholder="Enter text..." />
+          <div class="popup">
+            <input type="text" id="text" placeholder="Enter text..." />
+            <span class="popuptext" id="formPopup">Please fill the text!</span>
+          </div>
         </div>
         <div class="form-control">
           <label for="amount"
             ><b>Amount</b> <br />
             <i>(negative - expense, positive - income)</i></label
           >
+          <div class="popup">
           <input type="number" id="amount" placeholder="Enter amount..." />
+          <span class="popuptext" id="formPopup">Please fill the amount!</span>
+          </div>
         </div>
         <button class="btn">Add transaction</button>
       </form>
     </div>
+
+    
+     
+ 
 
     <script src="script.js"></script>
   </body>
