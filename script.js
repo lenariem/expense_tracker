@@ -6,7 +6,8 @@ const form = document.getElementById('form');
 const text = document.getElementById('text');
 const amount = document.getElementById('amount');
 const popup_container = document.querySelector(".popup");
-const popup = document.getElementById("formPopup");
+const text_popup = document.getElementById("textPopup");
+const amount_popup = document.getElementById("amountPopup");
 
 /* const  testTransactions = [
     {id: 1, text: 'Flowers', amount: -20},
@@ -23,8 +24,11 @@ let transactions = localStorage.getItem('transactions') !== null ? localStorageT
 function addTransaction(e) {
     e.preventDefault();
 
-    if(text.value.trim() === '' || amount.value.trim() === '') {
-        popup.classList.toggle("show");
+    if(text.value.trim() === '') {
+        text_popup.classList.add("show");
+    } else if(amount.value.trim() === '') {
+        text_popup.classList.remove("show");
+        amount_popup.classList.add("show");
     } else {
         const transaction = {
             id: generateID(),
