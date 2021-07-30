@@ -24,12 +24,7 @@ let transactions = localStorage.getItem('transactions') !== null ? localStorageT
 function addTransaction(e) {
     e.preventDefault();
 
-    if(text.value.trim() === '') {
-        text_popup.classList.add("show");
-    } else if(amount.value.trim() === '') {
-        text_popup.classList.remove("show");
-        amount_popup.classList.add("show");
-    } else {
+    if(text.value && amount.value) {
         const transaction = {
             id: generateID(),
             text: text.value.charAt(0).toUpperCase() + text.value.slice(1),
@@ -47,15 +42,24 @@ function addTransaction(e) {
         //reset fields after updating
         text.value = '';
         amount.value = '';
+       
+        //hide popups
+        amount_popup.classList.remove("show");
+        text_popup.classList.remove("show");
+
+    } else {
+        togglePopup(text, text_popup);
+        togglePopup(amount, amount_popup);
     }
 }
 
 // Generate random ID 
 function generateID() {
-    const letters = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
-    let selectedLetter = letters[Math.floor(Math.random() * letters.length)];
     let randomNumber =  Math.floor(Math.random() * 1000000000);
-    return selectedLetter + randomNumber;
+    /* const letters = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
+    let selectedLetter = letters[Math.floor(Math.random() * letters.length)];  */
+    
+    return randomNumber /* + selectedLetter */;
 }
 
 // Add transactions to DOM list
@@ -98,9 +102,9 @@ function updateValues() {
 }
 
 // Remove transaction by ID
-function removeTransaction(id) {
+function removeTransaction(id) {  
     transactions = transactions.filter(transaction => transaction.id !== id);
-
+    
     updateLocalStorage();
 
     init();
@@ -109,6 +113,15 @@ function removeTransaction(id) {
 // Update local storage transactions
 function updateLocalStorage() {
     localStorage.setItem('transactions', JSON.stringify(transactions));
+}
+
+// Toggle Popup
+function togglePopup(field, message) {
+    if(field.value.trim() === '') {
+        message.classList.add("show");
+    } else {
+        message.classList.remove("show");
+    }
 }
 
 
