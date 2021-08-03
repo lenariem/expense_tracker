@@ -30,7 +30,6 @@ h1 {
 }
 
 h2 {
-  position: relative;
   background: #9c88ff;
   font-weight: normal;
   padding: 8px 25px;
@@ -145,15 +144,14 @@ input[type='number'] {
   border-right: 5px solid #c0392b;
 }
 
-.delete-btn {
+.btn-icon {
   cursor: pointer;
-  background-color: #e74c3c;
+  position: absolute;
   border: 0;
   color: #fff;
   font-size: 20px;
   line-height: 20px;
   padding: 2px 5px;
-  position: absolute;
   top: 50%;
   left: 0;
   transform: translate(-100%, -50%);
@@ -161,7 +159,21 @@ input[type='number'] {
   transition: opacity 0.3s ease;
 }
 
-.list li:hover .delete-btn {
+.delete {
+  background-color: #e74c3c;
+}
+
+.edit {
+  background-color: #555;
+  left: 110%;
+}
+
+.save {
+  background-color: #2ecc71;
+  left: 120%;
+}
+
+.list li:hover .btn-icon {
   opacity: 1;
 }
 
