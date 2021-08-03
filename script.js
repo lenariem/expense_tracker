@@ -71,12 +71,14 @@ function addTransactionDOM(transaction) {
 
     //Add class based on value
     item.classList.add(transaction.amount < 0 ? 'minus' : 'plus');
-
+    
+    item.setAttribute('id', transaction.id);
     item.innerHTML = `
-        ${transaction.text} <span>${sign}${Math.abs(transaction.amount)}</span>
-        <button class="btn-icon delete" onclick="removeTransaction(${transaction.id})">x</button>
-        <button class="btn-icon edit" title="edit">&#9998;</button>
-        <button class="btn-icon save" title="save">&#10004;</button>
+        <span class="edit-text">${transaction.text}</span>
+        <span class="edit-amount">${sign}${Math.abs(transaction.amount)}</span>
+        <button class="btn-icon delete" contentEditable="false" onclick="removeTransaction(${transaction.id})">x</button>
+        <button class="btn-icon edit" title="edit" contentEditable="false" onclick="editTransaction(${transaction.id})">&#9998;</button>
+        <button class="btn-icon save" title="save" contentEditable="false" onclick="saveTransaction(${transaction.id})">&#10004;</button>
     `;
 
     list.appendChild(item);
@@ -108,6 +110,47 @@ function updateValues() {
 function removeTransaction(id) {  
     transactions = transactions.filter(transaction => transaction.id !== id);
     
+    updateLocalStorage();
+
+    init();
+}
+
+// Edit transaction
+function editTransaction(id) {
+    const transactionToEdit = document.getElementById(id);
+    transactionToEdit.setAttribute("contentEditable", "true");
+    transactionToEdit.focus();
+}
+
+//Save transaction after edit
+function saveTransaction(id) {
+
+    const transactionToSave = document.getElementById(id);
+    transactionToSave.setAttribute("contentEditable", "false");
+
+    const a = transactionToSave.getElementsByClassName("edit-text")[0];
+    const b = a.innerText;
+    console.log("b" + b);
+
+    const c = transactionToSave.getElementsByClassName("edit-amount")[0];
+    const d = +c.innerText;
+    console.log("d" + d);
+    
+    let transactionToUpdate = transactions.filter(transaction => transaction.id === id);
+    
+     transactionToUpdate = {
+        id: generateID(), 
+        text: b,
+        amount: d
+    };
+
+    transactions.push(transactionToUpdate);
+    
+    addTransactionDOM(transactionToUpdate);
+
+    removeTransaction(id);
+    
+    updateValues();
     updateLocalStorage();
 
     init();

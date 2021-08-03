@@ -173,7 +173,8 @@ input[type='number'] {
   left: 120%;
 }
 
-.list li:hover .btn-icon {
+.list li:hover .btn-icon,
+.list li:focus .btn-icon {
   opacity: 1;
 }
 
