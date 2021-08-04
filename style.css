@@ -2,6 +2,9 @@
 
 :root {
   --box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  --color-purple: #9c88ff;
+  --color-green: #2ecc71;
+  --color-red: #c0392b;
 }
 
 * {
@@ -30,7 +33,7 @@ h1 {
 }
 
 h2 {
-  background: #9c88ff;
+  background: var(--color-purple);
   font-weight: normal;
   padding: 8px 25px;
   text-align: center;
@@ -63,12 +66,12 @@ h4.title-balance {
   margin: 20px 0;
 }
 
-.inc-exp-container > div {
+.inc-exp-container>div {
   flex: 1;
   text-align: center;
 }
 
-.inc-exp-container > div:first-of-type {
+.inc-exp-container>div:first-of-type {
   border-right: 1px solid #dedede;
 }
 
@@ -79,11 +82,11 @@ h4.title-balance {
 }
 
 .money.plus {
-  color: #2ecc71;
+  color: var(--color-green);
 }
 
 .money.minus {
-  color: #c0392b;
+  color: var(--color-red);
 }
 
 label {
@@ -103,7 +106,7 @@ input[type='number'] {
 
 .btn {
   cursor: pointer;
-  background-color: #9c88ff;
+  background-color: var(--color-purple);
   box-shadow: var(--box-shadow);
   color: #fff;
   border: 0;
@@ -117,6 +120,10 @@ input[type='number'] {
 .btn:focus,
 .delete-btn:focus {
   outline: 0;
+}
+
+.btn:active {
+  transform: scale(0.98);
 }
 
 .list {
@@ -137,11 +144,11 @@ input[type='number'] {
 }
 
 .list li.plus {
-  border-right: 5px solid #2ecc71;
+  border-right: 5px solid var(--color-green);
 }
 
 .list li.minus {
-  border-right: 5px solid #c0392b;
+  border-right: 5px solid var(--color-red);
 }
 
 .btn-icon {
@@ -169,7 +176,7 @@ input[type='number'] {
 }
 
 .save {
-  background-color: #2ecc71;
+  background-color: var(--color-green);
   left: 120%;
 }
 
@@ -217,11 +224,21 @@ input[type='number'] {
 
 /* Animation fade in the popup */
 @-webkit-keyframes fadeIn {
-  from {opacity: 0;}
-  to {opacity: 1;}
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
 }
 
 @keyframes fadeIn {
-  from {opacity: 0;}
-  to {opacity:1 ;}
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
 }

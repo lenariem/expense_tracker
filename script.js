@@ -5,9 +5,8 @@ const list = document.getElementById('list');
 const form = document.getElementById('form');
 const text = document.getElementById('text');
 const amount = document.getElementById('amount');
-const popup_container = document.querySelector(".popup");
-const text_popup = document.getElementById("textPopup");
-const amount_popup = document.getElementById("amountPopup");
+const text_popup = document.getElementById("text-popup");
+const amount_popup = document.getElementById("amount-popup");
 
 /* const  testTransactions = [
     {id: 1, text: 'Flowers', amount: -20},
@@ -55,11 +54,7 @@ function addTransaction(e) {
 
 // Generate random ID 
 function generateID() {
-    let randomNumber =  Math.floor(Math.random() * 1000000000);
-    /* const letters = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
-    let selectedLetter = letters[Math.floor(Math.random() * letters.length)];  */
-    
-    return randomNumber /* + selectedLetter */;
+    return Math.floor(Math.random() * 1000000000);
 }
 
 // Add transactions to DOM list
@@ -127,21 +122,21 @@ function saveTransaction(id) {
 
     const transactionToSave = document.getElementById(id);
     transactionToSave.setAttribute("contentEditable", "false");
-
-    const a = transactionToSave.getElementsByClassName("edit-text")[0];
-    const b = a.innerText;
-    console.log("b" + b);
-
-    const c = transactionToSave.getElementsByClassName("edit-amount")[0];
-    const d = +c.innerText;
-    console.log("d" + d);
+   
+    //Update text
+    const textEl = transactionToSave.getElementsByClassName("edit-text")[0];
+    const textToUpdate = textEl.innerText;
+   
+    //Update amount
+    const amountEl = transactionToSave.getElementsByClassName("edit-amount")[0];
+    const amountToUpdate = +amountEl.innerText;
     
     let transactionToUpdate = transactions.filter(transaction => transaction.id === id);
     
      transactionToUpdate = {
         id: generateID(), 
-        text: b,
-        amount: d
+        text: textToUpdate,
+        amount: amountToUpdate
     };
 
     transactions.push(transactionToUpdate);
@@ -169,7 +164,6 @@ function togglePopup(field, message) {
         message.classList.remove("show");
     }
 }
-
 
 // Init app
 function init() {
