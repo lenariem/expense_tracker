@@ -1,0 +1,29 @@
+{
+  "name": "expense_tracker",
+  "version": "1.0.0",
+  "description": "Keep track of income and expenses. Add, edit and remove items and save to local storage",
+  "main": "script.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lenariem/expense_tracker.git"
+  },
+  "author": "Elena Riemer",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lenariem/expense_tracker/issues"
+  },
+  "homepage": "https://github.com/lenariem/expense_tracker#readme",
+  "dependencies": {
+    "@babel/preset-env": "^7.16.11",
+    "@testing-library/dom": "^8.11.2",
+    "@testing-library/jest-dom": "^5.16.1",
+    "babel-jest": "^27.4.6",
+    "jest": "^27.4.7"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.16.12"
+  }
+}
