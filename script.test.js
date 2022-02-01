@@ -1,4 +1,4 @@
-import { fireEvent, getByText } from "@testing-library/dom";
+import { getByText } from "@testing-library/dom";
 import "@testing-library/jest-dom/extend-expect";
 import { JSDOM } from "jsdom";
 import fs from "fs";
@@ -32,9 +32,15 @@ describe("Rendering elements:", () => {
     });
 
     test("a inc-exp-container", () => {
-        expect(container.querySelector(".inc-exp-container")).toBeInTheDocument();
-        expect(container.querySelector("#money-plus")).toHaveTextContent("+$0.00");
-        expect(container.querySelector("#money-minus")).toHaveTextContent("-$0.00");
+        expect(
+            container.querySelector(".inc-exp-container")
+        ).toBeInTheDocument();
+        expect(container.querySelector("#money-plus")).toHaveTextContent(
+            "+$0.00"
+        );
+        expect(container.querySelector("#money-minus")).toHaveTextContent(
+            "-$0.00"
+        );
     });
 
     test("a history element is empty", () => {
@@ -49,21 +55,4 @@ describe("Rendering elements:", () => {
         const button = getByText(container, "Add transaction");
         expect(button).toBeInTheDocument();
     });
-
-    /*  it("renders a new paragraph via JavaScript when the button is clicked", async () => {
-        const button = getByText(container, "Click me for a terrible pun");
-
-        fireEvent.click(button);
-        let generatedParagraphs =
-            container.querySelectorAll("#pun-container p");
-        expect(generatedParagraphs.length).toBe(1);
-
-        fireEvent.click(button);
-        generatedParagraphs = container.querySelectorAll("#pun-container p");
-        expect(generatedParagraphs.length).toBe(2);
-
-        fireEvent.click(button);
-        generatedParagraphs = container.querySelectorAll("#pun-container p");
-        expect(generatedParagraphs.length).toBe(3);
-    }); */
 });

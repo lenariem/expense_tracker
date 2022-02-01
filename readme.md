@@ -11,6 +11,7 @@ https://lenariem.github.io/expense_tracker/
 * CSS;
 * HTML;
 * Local Storage;
+* Jest
 
 
 ### User can:

@@ -18,12 +18,13 @@
   "homepage": "https://github.com/lenariem/expense_tracker#readme",
   "dependencies": {
     "@babel/preset-env": "^7.16.11",
-    "@testing-library/dom": "^8.11.2",
     "@testing-library/jest-dom": "^5.16.1",
     "babel-jest": "^27.4.6",
     "jest": "^27.4.7"
   },
   "devDependencies": {
-    "@babel/core": "^7.16.12"
+    "@babel/core": "^7.16.12",
+    "@testing-library/dom": "^8.11.2",
+    "@testing-library/user-event": "^13.5.0"
   }
 }
